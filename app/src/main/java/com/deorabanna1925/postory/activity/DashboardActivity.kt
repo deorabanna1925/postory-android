@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import com.deorabanna1925.postory.R
 import com.deorabanna1925.postory.databinding.ActivityDashboardBinding
 import com.deorabanna1925.postory.fragment.PostFragment
+import com.deorabanna1925.postory.fragment.SettingsFragment
+import com.deorabanna1925.postory.fragment.StoryFragment
 import java.util.*
 
 class DashboardActivity : AppCompatActivity() {
@@ -56,13 +58,13 @@ class DashboardActivity : AppCompatActivity() {
                     actionBar.title = "Post"
                 }
                 R.id.bottom_nav_explore -> {
-                    selectedFragment = PostFragment()
+                    selectedFragment = StoryFragment()
                     bundle.putString("data", "Story Fragment")
                     selectedFragment.setArguments(bundle)
                     actionBar.title = "Story"
                 }
                 R.id.bottom_nav_settings -> {
-                    selectedFragment = PostFragment()
+                    selectedFragment = SettingsFragment()
                     bundle.putString("data", "Settings Fragment")
                     selectedFragment.setArguments(bundle)
                     actionBar.title = "Settings"

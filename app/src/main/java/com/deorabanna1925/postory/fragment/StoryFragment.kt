@@ -1,39 +1,32 @@
 package com.deorabanna1925.postory.fragment
 
-import android.R.attr
 import android.app.Activity
+import android.content.ContentResolver
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.MimeTypeMap
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import com.deorabanna1925.postory.databinding.FragmentPostBinding
+import com.deorabanna1925.postory.databinding.FragmentStoryBinding
 import com.yalantis.ucrop.UCrop
-import android.webkit.MimeTypeMap
-
-import android.content.ContentResolver
-import android.net.Uri
-import android.provider.OpenableColumns
-
-import android.R.attr.data
-import android.app.Activity.RESULT_OK
-import android.database.Cursor
-import androidx.annotation.Nullable
 import java.io.File
 
+class StoryFragment : Fragment() {
 
-class PostFragment : Fragment() {
-
-    private lateinit var binding: FragmentPostBinding
+    private lateinit var binding: FragmentStoryBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentPostBinding.inflate(inflater, container, false)
+        binding = FragmentStoryBinding.inflate(inflater, container, false)
 
 //        binding.data.text = arguments?.getString("data")
 
@@ -46,7 +39,7 @@ class PostFragment : Fragment() {
 
     private var resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
+            if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent = result.data!!
                 val destinationFileName: String =
                     System.currentTimeMillis().toString() + "." + getImageExtension(data.data!!)
@@ -59,7 +52,7 @@ class PostFragment : Fragment() {
 
                 UCrop.of(data.data!!, Uri.fromFile(File(requireActivity().cacheDir, destinationFileName)))
                     .withOptions(options)
-                    .withAspectRatio(1f, 1f)
+                    .withAspectRatio(9f, 16f)
                     .start(requireActivity(),this)
             }
         }
@@ -70,7 +63,7 @@ class PostFragment : Fragment() {
         @Nullable data: Intent?
     ) {
         super.onActivityResult(requestCode, resultCode, data)
-         if (requestCode == UCrop.REQUEST_CROP && resultCode == RESULT_OK) {
+        if (requestCode == UCrop.REQUEST_CROP && resultCode == Activity.RESULT_OK) {
             handleCropResult(data)
         }
     }
