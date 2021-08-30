@@ -19,7 +19,7 @@ class SettingsFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
 
-        binding.data.text = arguments?.getString("data")
+//        binding.data.text = arguments?.getString("data")
 
         return binding.root
     }
