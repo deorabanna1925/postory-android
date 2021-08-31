@@ -42,6 +42,7 @@ class DashboardActivity : AppCompatActivity() {
     private fun setupActionBar() {
         actionBar = supportActionBar!!
         actionBar.title = "Post"
+        actionBar.hide()
     }
 
     @SuppressLint("NonConstantResourceId")

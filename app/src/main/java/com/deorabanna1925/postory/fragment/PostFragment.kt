@@ -1,6 +1,5 @@
 package com.deorabanna1925.postory.fragment
 
-import android.R.attr
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
@@ -10,17 +9,13 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import com.deorabanna1925.postory.databinding.FragmentPostBinding
-import com.yalantis.ucrop.UCrop
 import android.webkit.MimeTypeMap
 
 import android.content.ContentResolver
 import android.net.Uri
-import android.provider.OpenableColumns
-
-import android.R.attr.data
 import android.app.Activity.RESULT_OK
-import android.database.Cursor
 import androidx.annotation.Nullable
+import com.yalantis.ucrop.UCrop
 import java.io.File
 
 
@@ -60,7 +55,7 @@ class PostFragment : Fragment() {
                 UCrop.of(data.data!!, Uri.fromFile(File(requireActivity().cacheDir, destinationFileName)))
                     .withOptions(options)
                     .withAspectRatio(1f, 1f)
-                    .start(requireActivity(),this)
+                    .start(requireActivity(), this)
             }
         }
 
@@ -70,7 +65,7 @@ class PostFragment : Fragment() {
         @Nullable data: Intent?
     ) {
         super.onActivityResult(requestCode, resultCode, data)
-         if (requestCode == UCrop.REQUEST_CROP && resultCode == RESULT_OK) {
+        if (requestCode == UCrop.REQUEST_CROP && resultCode == RESULT_OK) {
             handleCropResult(data)
         }
     }
