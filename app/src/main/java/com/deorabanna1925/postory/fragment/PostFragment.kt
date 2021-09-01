@@ -78,14 +78,11 @@ class PostFragment : Fragment() {
     }
 
     private fun openPickPhoto() {
-/*        val pickPhoto = Intent(
+        val pickPhoto = Intent(
             Intent.ACTION_PICK,
             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        )*/
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        resultLauncher.launch(intent)
+        )
+        resultLauncher.launch(pickPhoto)
     }
 
     private fun getImageExtension(uri: Uri): String? {

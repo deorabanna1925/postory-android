@@ -12,7 +12,6 @@ import android.webkit.MimeTypeMap
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
-import com.deorabanna1925.postory.databinding.FragmentPostBinding
 import com.deorabanna1925.postory.databinding.FragmentStoryBinding
 import com.yalantis.ucrop.UCrop
 import java.io.File
@@ -76,14 +75,11 @@ class StoryFragment : Fragment() {
     }
 
     private fun openPickPhoto() {
-/*        val pickPhoto = Intent(
+        val pickPhoto = Intent(
             Intent.ACTION_PICK,
             android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI
-        )*/
-        val intent = Intent()
-        intent.type = "image/*"
-        intent.action = Intent.ACTION_GET_CONTENT
-        resultLauncher.launch(intent)
+        )
+        resultLauncher.launch(pickPhoto)
     }
 
     private fun getImageExtension(uri: Uri): String? {
