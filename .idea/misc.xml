@@ -4,12 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Projects/Postory/app/src/main/res/layout/activity_dashboard.xml" value="0.15" />
+        <entry key="..\:/Projects/Postory/app/src/main/res/layout/activity_generate_gradient.xml" value="0.2" />
         <entry key="..\:/Projects/Postory/app/src/main/res/layout/activity_main.xml" value="0.19479166666666667" />
         <entry key="..\:/Projects/Postory/app/src/main/res/layout/activity_splash.xml" value="0.22" />
         <entry key="..\:/Projects/Postory/app/src/main/res/layout/fragment_post.xml" value="0.19479166666666667" />
         <entry key="..\:/Projects/Postory/app/src/main/res/layout/fragment_settings.xml" value="0.19479166666666667" />
         <entry key="..\:/Projects/Postory/app/src/main/res/layout/fragment_story.xml" value="0.19479166666666667" />
         <entry key="..\:/Projects/Postory/app/src/main/res/menu/bottom_navigation.xml" value="0.19479166666666667" />
+        <entry key="..\:/Projects/Postory/app/src/main/res/xml/file_paths.xml" value="0.2" />
       </map>
     </option>
   </component>
