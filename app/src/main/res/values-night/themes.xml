@@ -15,9 +15,4 @@
         <item name="backgroundColor">@color/background_color_night</item>
     </style>
 
-    <style name="TranslucentBar" parent="Theme.Postory">
-        <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:windowTranslucentNavigation">true</item>
-    </style>
-
 </resources>

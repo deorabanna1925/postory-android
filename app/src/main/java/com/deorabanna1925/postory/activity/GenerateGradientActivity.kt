@@ -13,6 +13,7 @@ import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
 import android.view.View
+import android.widget.GridLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.deorabanna1925.postory.databinding.ActivityGenerateGradientBinding
@@ -21,6 +22,8 @@ import java.io.FileOutputStream
 import java.util.*
 import kotlin.collections.ArrayList
 import androidx.core.content.FileProvider
+import androidx.recyclerview.widget.GridLayoutManager
+import com.deorabanna1925.postory.adapter.GradientColorAdapter
 import java.io.OutputStream
 
 
@@ -60,8 +63,9 @@ class GenerateGradientActivity : AppCompatActivity() {
 
         binding.generate.setOnClickListener {
             colors.clear()
+            binding.direction.rotation = 0f
             val value = Integer.parseInt(binding.numberOfColors.text.toString())
-            for(i in 0 until value){
+            for (i in 0 until value) {
                 val random = Random()
                 val nextInt: Int = random.nextInt(0xffffff + 1)
                 val colorCode = String.format("#%06x", nextInt)
@@ -70,6 +74,7 @@ class GenerateGradientActivity : AppCompatActivity() {
             showGradient()
         }
 
+        binding.generate.performClick()
 
     }
 
@@ -82,28 +87,59 @@ class GenerateGradientActivity : AppCompatActivity() {
         gd.cornerRadius = 0f
         binding.image.background = gd
 
+        val value = Integer.parseInt(binding.numberOfColors.text.toString())
+        if (value == 2) {
+            binding.recyclerView.layoutManager = GridLayoutManager(this, 2)
+        } else {
+            binding.recyclerView.layoutManager = GridLayoutManager(this, 3)
+        }
+        binding.recyclerView.isNestedScrollingEnabled = false
+        binding.recyclerView.setHasFixedSize(true)
+
+        binding.recyclerView.adapter = GradientColorAdapter(this, colors)
+
         binding.rotate.setOnClickListener {
             when (gd.orientation) {
-                GradientDrawable.Orientation.LEFT_RIGHT -> gd.orientation = GradientDrawable.Orientation.BL_TR
-                GradientDrawable.Orientation.BL_TR -> gd.orientation = GradientDrawable.Orientation.BOTTOM_TOP
-                GradientDrawable.Orientation.BOTTOM_TOP -> gd.orientation = GradientDrawable.Orientation.BR_TL
-                GradientDrawable.Orientation.BR_TL -> gd.orientation = GradientDrawable.Orientation.RIGHT_LEFT
-                GradientDrawable.Orientation.RIGHT_LEFT -> gd.orientation = GradientDrawable.Orientation.TR_BL
-                GradientDrawable.Orientation.TR_BL -> gd.orientation = GradientDrawable.Orientation.TOP_BOTTOM
-                GradientDrawable.Orientation.TOP_BOTTOM -> gd.orientation = GradientDrawable.Orientation.TL_BR
-                GradientDrawable.Orientation.TL_BR -> gd.orientation = GradientDrawable.Orientation.LEFT_RIGHT
+                GradientDrawable.Orientation.LEFT_RIGHT -> gd.orientation =
+                    GradientDrawable.Orientation.BL_TR
+                GradientDrawable.Orientation.BL_TR -> gd.orientation =
+                    GradientDrawable.Orientation.BOTTOM_TOP
+                GradientDrawable.Orientation.BOTTOM_TOP -> gd.orientation =
+                    GradientDrawable.Orientation.BR_TL
+                GradientDrawable.Orientation.BR_TL -> gd.orientation =
+                    GradientDrawable.Orientation.RIGHT_LEFT
+                GradientDrawable.Orientation.RIGHT_LEFT -> gd.orientation =
+                    GradientDrawable.Orientation.TR_BL
+                GradientDrawable.Orientation.TR_BL -> gd.orientation =
+                    GradientDrawable.Orientation.TOP_BOTTOM
+                GradientDrawable.Orientation.TOP_BOTTOM -> gd.orientation =
+                    GradientDrawable.Orientation.TL_BR
+                GradientDrawable.Orientation.TL_BR -> gd.orientation =
+                    GradientDrawable.Orientation.LEFT_RIGHT
             }
+            binding.direction.rotation = binding.direction.rotation - 45.toFloat()
             gd.cornerRadius = 0f
             binding.image.background = gd
         }
 
         binding.print.setOnClickListener {
-            val bitmap = getScreenShotFromView(binding.image)
-            if (bitmap != null) {
-                saveMediaToStorage(bitmap)
+            printCurrent()
+        }
+
+        binding.printAll.setOnClickListener {
+            for(i in 0 until 8){
+                printCurrent()
+                binding.rotate.performClick()
             }
         }
 
+    }
+
+    private fun printCurrent() {
+        val bitmap = getScreenShotFromView(binding.finalPrint)
+        if (bitmap != null) {
+            saveMediaToStorage(bitmap)
+        }
     }
 
     private fun getScreenShotFromView(v: View): Bitmap? {
@@ -171,10 +207,11 @@ class GenerateGradientActivity : AppCompatActivity() {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
             Toast.makeText(this, "Saved to Gallery", Toast.LENGTH_SHORT).show()
         }
-        val share = Intent(Intent.ACTION_SEND)
+
+/*        val share = Intent(Intent.ACTION_SEND)
         share.type = "image/jpeg"
         share.putExtra(Intent.EXTRA_STREAM, Uri.parse(downloads))
         share.putExtra(Intent.EXTRA_TEXT, "Hey Friends,\nCheck out this gradient from findgradient.")
-        startActivity(Intent.createChooser(share, "Share Image"))
+        startActivity(Intent.createChooser(share, "Share Image"))*/
     }
 }

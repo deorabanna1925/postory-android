@@ -116,6 +116,38 @@
                     android:background="?attr/backgroundColor" />
 
                 <TextView
+                    android:id="@+id/generate_shape"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:paddingStart="8dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="16dp"
+                    android:text="Generate Shape" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/backgroundColor" />
+
+                <TextView
+                    android:id="@+id/generate_solid"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:paddingStart="8dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="16dp"
+                    android:text="Generate Solid" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="?attr/backgroundColor" />
+
+                <TextView
                     android:id="@+id/generate_gradient"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

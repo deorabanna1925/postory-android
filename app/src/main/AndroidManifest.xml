@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Postory">
         <activity
+            android:name=".activity.GenerateShapeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.GenerateSolidActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.GenerateGradientActivity"
             android:exported="false" />
         <activity
@@ -25,7 +31,6 @@
         <activity
             android:name=".activity.DashboardActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/TranslucentBar"
             tools:ignore="LockedOrientationActivity" />
         <activity
             android:name=".activity.SplashActivity"
