@@ -12,6 +12,8 @@ import android.webkit.MimeTypeMap
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
+import com.deorabanna1925.postory.activity.PostEditActivity
+import com.deorabanna1925.postory.activity.StoryEditActivity
 import com.deorabanna1925.postory.databinding.FragmentStoryBinding
 import com.yalantis.ucrop.UCrop
 import java.io.File
@@ -29,7 +31,7 @@ class StoryFragment : Fragment() {
 
 //        binding.data.text = arguments?.getString("data")
 
-        binding.selectNew.setOnClickListener {
+        binding.selectImage.setOnClickListener {
             openPickPhoto()
         }
 
@@ -70,7 +72,9 @@ class StoryFragment : Fragment() {
     private fun handleCropResult(data: Intent?) {
         val resultUri = UCrop.getOutput(data!!)
         if (resultUri != null) {
-            binding.image.setImageURI(resultUri)
+            val intent = Intent(requireActivity(), StoryEditActivity::class.java)
+            intent.putExtra("imagePath",resultUri.toString())
+            startActivity(intent)
         }
     }
 

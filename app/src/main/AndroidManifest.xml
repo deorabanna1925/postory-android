@@ -15,6 +15,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Postory">
         <activity
+            android:name=".activity.PostEditActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activity.StoryEditActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.GenerateShapeActivity"
             android:exported="false" />
         <activity

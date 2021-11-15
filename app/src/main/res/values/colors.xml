@@ -10,4 +10,8 @@
     <color name="background_color">#e6e6e6</color>
     <color name="background_color_night">#191919</color>
 
+    <color name="thumb_background_color">#000000</color>
+    <color name="zomato_red">#a40100</color>
+    <color name="placeholder_background">#222322</color>
+
 </resources>

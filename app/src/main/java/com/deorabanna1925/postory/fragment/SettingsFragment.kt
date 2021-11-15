@@ -7,11 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.deorabanna1925.postory.activity.DashboardActivity
-import com.deorabanna1925.postory.activity.GenerateGradientActivity
-import com.deorabanna1925.postory.activity.GenerateShapeActivity
-import com.deorabanna1925.postory.activity.GenerateSolidActivity
-import com.deorabanna1925.postory.databinding.FragmentPostBinding
+import com.deorabanna1925.postory.activity.*
 import com.deorabanna1925.postory.databinding.FragmentSettingsBinding
 
 class SettingsFragment : Fragment() {
@@ -28,7 +24,7 @@ class SettingsFragment : Fragment() {
 //        binding.data.text = arguments?.getString("data")
 
         binding.aboutUs.setOnClickListener {
-            Toast.makeText(requireActivity(),"",Toast.LENGTH_SHORT).show();
+            Toast.makeText(requireActivity(),"",Toast.LENGTH_SHORT).show()
         }
 
         binding.generateShape.setOnClickListener {

@@ -1,20 +1,19 @@
 package com.deorabanna1925.postory.fragment
 
 import android.app.Activity
+import android.content.ContentResolver
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.fragment.app.Fragment
-import com.deorabanna1925.postory.databinding.FragmentPostBinding
 import android.webkit.MimeTypeMap
-
-import android.content.ContentResolver
-import android.net.Uri
-import android.app.Activity.RESULT_OK
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Nullable
+import androidx.fragment.app.Fragment
+import com.deorabanna1925.postory.activity.PostEditActivity
+import com.deorabanna1925.postory.databinding.FragmentPostBinding
 import com.yalantis.ucrop.UCrop
 import java.io.File
 
@@ -23,6 +22,7 @@ class PostFragment : Fragment() {
 
     private lateinit var binding: FragmentPostBinding
 
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,9 +30,7 @@ class PostFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentPostBinding.inflate(inflater, container, false)
 
-//        binding.data.text = arguments?.getString("data")
-
-        binding.selectNew.setOnClickListener {
+        binding.selectImage.setOnClickListener {
             openPickPhoto()
         }
 
@@ -41,7 +39,7 @@ class PostFragment : Fragment() {
 
     private var resultLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
+            if (result.resultCode == Activity.RESULT_OK) {
                 val data: Intent = result.data!!
                 val destinationFileName: String =
                     System.currentTimeMillis().toString() + "." + getImageExtension(data.data!!)
@@ -55,7 +53,7 @@ class PostFragment : Fragment() {
                 UCrop.of(data.data!!, Uri.fromFile(File(requireActivity().cacheDir, destinationFileName)))
                     .withOptions(options)
                     .withAspectRatio(1f, 1f)
-                    .start(requireActivity(), this)
+                    .start(requireActivity(),this)
             }
         }
 
@@ -65,7 +63,7 @@ class PostFragment : Fragment() {
         @Nullable data: Intent?
     ) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == UCrop.REQUEST_CROP && resultCode == RESULT_OK) {
+        if (requestCode == UCrop.REQUEST_CROP && resultCode == Activity.RESULT_OK) {
             handleCropResult(data)
         }
     }
@@ -73,7 +71,9 @@ class PostFragment : Fragment() {
     private fun handleCropResult(data: Intent?) {
         val resultUri = UCrop.getOutput(data!!)
         if (resultUri != null) {
-            binding.image.setImageURI(resultUri)
+            val intent = Intent(requireActivity(), PostEditActivity::class.java)
+            intent.putExtra("imagePath",resultUri.toString())
+            startActivity(intent)
         }
     }
 

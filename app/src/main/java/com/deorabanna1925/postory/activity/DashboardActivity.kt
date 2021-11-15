@@ -1,16 +1,15 @@
 package com.deorabanna1925.postory.activity
 
 import android.annotation.SuppressLint
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.deorabanna1925.postory.R
 import com.deorabanna1925.postory.databinding.ActivityDashboardBinding
 import com.deorabanna1925.postory.fragment.PostFragment
 import com.deorabanna1925.postory.fragment.SettingsFragment
 import com.deorabanna1925.postory.fragment.StoryFragment
-import java.util.*
 
 class DashboardActivity : AppCompatActivity() {
 
@@ -78,4 +77,5 @@ class DashboardActivity : AppCompatActivity() {
             true
         }
     }
+
 }
