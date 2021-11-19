@@ -55,20 +55,29 @@ class GenerateShapeActivity : AppCompatActivity() {
                 binding.image.setImageURI(data.data)
                 binding.image.setBackgroundColor(Color.parseColor("#ffffff"))
 
-                binding.changeTint.setOnClickListener {
+                binding.tint.setOnClickListener {
                     val random = Random()
                     val nextInt: Int = random.nextInt(0xffffff + 1)
                     val colorCode = String.format("#%06x", nextInt)
                     binding.image.setColorFilter(Color.parseColor(colorCode))
                 }
-                binding.random.setOnClickListener {
+                binding.background.setOnClickListener {
                     val random = Random()
                     val nextInt: Int = random.nextInt(0xffffff + 1)
                     val colorCode = String.format("#%06x", nextInt)
                     binding.image.setBackgroundColor(Color.parseColor(colorCode))
                 }
-                binding.white.setOnClickListener {
+                binding.whiteTint.setOnClickListener {
+                    binding.image.setColorFilter(Color.parseColor("#ffffff"))
+                }
+                binding.blackTint.setOnClickListener {
+                    binding.image.setColorFilter(Color.parseColor("#000000"))
+                }
+                binding.whiteBackground.setOnClickListener {
                     binding.image.setBackgroundColor(Color.parseColor("#ffffff"))
+                }
+                binding.blackBackground.setOnClickListener {
+                    binding.image.setBackgroundColor(Color.parseColor("#000000"))
                 }
                 binding.print.setOnClickListener {
                     printCurrent()

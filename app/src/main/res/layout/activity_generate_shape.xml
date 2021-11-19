@@ -48,26 +48,67 @@
                 android:layout_margin="4dp"
                 android:text="Select Image" />
 
-            <Button
-                android:id="@+id/change_tint"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:text="Change Tint" />
+                android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/random"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:text="Random Background" />
+                <Button
+                    android:id="@+id/tint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Tint" />
 
-            <Button
-                android:id="@+id/white"
+                <Button
+                    android:id="@+id/background"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="Background" />
+
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="4dp"
-                android:text="White Background" />
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/white_tint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="WT" />
+
+                <Button
+                    android:id="@+id/black_tint"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="BT" />
+
+                <Button
+                    android:id="@+id/white_background"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="WB" />
+
+                <Button
+                    android:id="@+id/black_background"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="4dp"
+                    android:layout_weight="1"
+                    android:text="BB" />
+
+            </LinearLayout>
 
             <Button
                 android:id="@+id/print"
