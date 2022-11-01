@@ -13,6 +13,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.Nullable
 import androidx.fragment.app.Fragment
 import com.deorabanna1925.postory.activity.PostEditActivity
+import com.deorabanna1925.postory.activity.PostSketchActivity
 import com.deorabanna1925.postory.databinding.FragmentPostBinding
 import com.yalantis.ucrop.UCrop
 import java.io.File
@@ -71,7 +72,7 @@ class PostFragment : Fragment() {
     private fun handleCropResult(data: Intent?) {
         val resultUri = UCrop.getOutput(data!!)
         if (resultUri != null) {
-            val intent = Intent(requireActivity(), PostEditActivity::class.java)
+            val intent = Intent(requireActivity(), PostSketchActivity::class.java)
             intent.putExtra("imagePath",resultUri.toString())
             startActivity(intent)
         }

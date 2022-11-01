@@ -15,6 +15,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Postory">
         <activity
+            android:name=".activity.PostSketchActivity"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".activity.PostEditActivity"
             android:exported="false" />
         <activity
